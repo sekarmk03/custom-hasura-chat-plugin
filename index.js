@@ -33,11 +33,14 @@ app.post('/pre-parse/validation', async (req, res) => {
       const { rawRequest } = req.body;
       const { query, mutation, operationName, variables } = rawRequest;
 
+      console.log(rawRequest);
+
       if (operationName == 'SendMessage') {
         return res.status(200).json({
           data: {
             validate: true,
             message: 'Validation success',
+            rawRequest: rawRequest,
             query: query,
             mutation: mutation,
             operationName: operationName,

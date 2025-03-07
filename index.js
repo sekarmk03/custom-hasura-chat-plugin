@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/pre-parse/validation', async (req, res) => {
+app.post('/pre-parse/validation', async (req, res) => {
     try {
       const authHeader = req.headers['hasura-m-auth'];
       if (authHeader !== 'your-super-secret-key') {

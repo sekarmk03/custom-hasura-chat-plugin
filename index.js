@@ -35,16 +35,27 @@ app.post('/pre-parse/validation', async (req, res) => {
 
       console.log(rawRequest);
 
+      const match = query.match(/objects:\s*({.*?})/s);
+
+      let jsonObject = null;
+      if (match) {
+        const jsonString = match[1]
+            .replace(/(\w+):/g, '"$1":')  // Convert keys to valid JSON format
+            .replace(/"/g, '\"');        // Ensure correct escaping
+    
+        jsonObject = JSON.parse(jsonString);
+        console.log(jsonObject);
+    } else {
+        console.log("No JSON object found.");
+    }
+
       if (operationName == 'SendMessage') {
         return res.status(200).json({
           data: {
             validate: true,
             message: 'Validation success',
             rawRequest: rawRequest,
-            query: query,
-            mutation: mutation,
-            operationName: operationName,
-            variables: variables,
+            jsonObject: jsonObject
           },
         });
       }

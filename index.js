@@ -31,7 +31,7 @@ app.post('/pre-parse/validation', async (req, res) => {
       }
 
       const { rawRequest } = req.body;
-      const { query, operationName } = rawRequest;
+      const { query, operationName, variables } = rawRequest;
 
       if (operationName == 'MyQuery') {
         return res.status(200).json({
@@ -39,6 +39,8 @@ app.post('/pre-parse/validation', async (req, res) => {
             validate: true,
             message: 'Validation success',
             query: query,
+            operationName: operationName,
+            variables: variables,
           },
         });
       }

@@ -16,13 +16,12 @@ module.exports = {
                 case "CreateNewMessage":
                     console.log(query);
                     return res.status(200).json({
-                                    data: {
-                                      validate: true,
-                                      message: 'Validation success',
-                                      rawRequest: rawRequest,
-                                      jsonObject: jsonObject
-                                    },
-                                  });
+                        data: {
+                            validate: true,
+                            message: 'Validation success',
+                            rawRequest: rawRequest,
+                        },
+                  });
                     break;
                 default:
                     break;

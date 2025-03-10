@@ -22,16 +22,18 @@ const objectParser = (query) => {
 
 const argumentParser = (query) => {
     // Dynamically match any function name and extract arguments inside `(...)`
-    const match = query.match(/\w+\((.*?)\)/);
+    const match = query.match(/\w+\s*\(([\s\S]*?)\)/);
     if (!match) return null; // Return null if no function arguments are found
 
-    const argsString = match[1]; // Extract the arguments inside parentheses
-    const argsArray = argsString.split(/,\s*/); // Split by comma to get key-value pairs
+    const argsString = match[1].trim(); // Extract arguments inside parentheses
+    const argsArray = argsString.split(/\n|,/).map(arg => arg.trim()); // Split by newline or comma
 
     const jsonObj = {};
     argsArray.forEach(arg => {
-        const [key, value] = arg.split(/:\s*/);
-        jsonObj[key.trim()] = isNaN(value) ? value.replace(/"/g, '') : Number(value);
+        if (arg.includes(":")) {
+            const [key, value] = arg.split(/:\s*/);
+            jsonObj[key.trim()] = isNaN(value) ? value.replace(/"/g, '') : Number(value);
+        }
     });
 
     return jsonObj;

@@ -37,4 +37,7 @@ const argumentParser = (query) => {
     return jsonObj;
 };
 
-module.exports = objectParser;
+module.exports = {
+    objectParser,
+    argumentParser
+};

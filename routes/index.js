@@ -5,6 +5,6 @@ const preParse = require('./pre-parse');
 const preResponse = require('./pre-response');
 
 router.use('/pre-parse', preParse);
-router.use('/pre-response', preResponse);
+// router.use('/pre-response', preResponse);
 
 module.exports = router;

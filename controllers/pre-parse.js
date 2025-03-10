@@ -18,7 +18,7 @@ module.exports = {
                     console.log(query);
                     const parsed = argumentParser(query);
 
-                    console.log(parsed);
+                    console.log("Parsed: " + parsed);
 
                     // const val = v.validate(parsed, requestValidator.createMessage);
                     // console.log(val);

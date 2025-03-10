@@ -18,6 +18,9 @@ module.exports = {
                     console.log(query);
                     const parsed = argumentParser(query);
                     console.log(parsed);
+                    console.log(parsed.chatId);
+                    console.log(parsed.content);
+                    
                     return res.status(200).json({
                         data: {
                             validate: true,

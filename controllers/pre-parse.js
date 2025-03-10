@@ -28,6 +28,8 @@ module.exports = {
                     break;
             }
         } catch (error) {
+            console.log(error);
+            
             return err.internal(res, error.message);
         }
     }

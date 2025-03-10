@@ -17,12 +17,13 @@ module.exports = {
                 case "CreateNewMessage":
                     console.log(query);
                     const parsed = argumentParser(query);
+
                     console.log(parsed);
 
-                    const val = v.validate(parsed, requestValidator.createMessage);
-                    console.log(val);
+                    // const val = v.validate(parsed, requestValidator.createMessage);
+                    // console.log(val);
                     
-                    if (val.length) return err.bad_request(res, val[0].message);
+                    // if (val.length) return err.bad_request(res, val[0].message);
                     
                     return res.status(200).json({
                         data: {

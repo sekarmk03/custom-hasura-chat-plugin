@@ -1,5 +1,5 @@
 const { HASURA_PLUGIN_SECRET } = process.env;
-const err = require('../utils/errors');
+const err = require('../utils/common/errors');
 
 const validateHasuraPluginSecret = (req, res, next) => {
     const authHeader = req.headers['hasura-m-auth'];

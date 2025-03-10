@@ -1,4 +1,4 @@
-const err = require('../utils/commons/errors');
+const err = require('../utils/common/errors');
 const reqValidator = require('../utils/validator/request');
 const Validator = require('fastest-validator');
 const v = new Validator();

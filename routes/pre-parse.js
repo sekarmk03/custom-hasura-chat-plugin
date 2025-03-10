@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { preParse } = require('../controllers');
-const validateHasuraPluginSecret = require('../middlewares/graphql-auth');
+const validateHasuraPluginSecret = require('../middlewares/validateHasuraPluginSecret');
 
 router.post('/validation', validateHasuraPluginSecret(), preParse.validation);
 

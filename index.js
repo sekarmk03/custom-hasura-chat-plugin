@@ -16,7 +16,7 @@ app.use(cors({
 }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', router);
+app.use(router);
 
 app.get('/', (req, res) => {
   const ip_addr = req.headers['x-forwarded-for'] || req.socket.remoteAddress;

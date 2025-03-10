@@ -39,7 +39,13 @@ const argumentParser = (query) => {
     return jsonObj;
 };
 
+const extractContent = (query) => {
+    const match = query.match(/content:\s*"([\s\S]*?)"/);
+    return match ? match[1] : null;
+};
+
 module.exports = {
     objectParser,
-    argumentParser
+    argumentParser,
+    extractContent
 };

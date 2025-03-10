@@ -2,6 +2,7 @@ const err = require('../utils/common/errors');
 const reqValidator = require('../utils/validator/request');
 const Validator = require('fastest-validator');
 const v = new Validator();
+const { argumentParser } = require('../utils/common/object-parser');
 
 module.exports = {
     validation: async (req, res, next) => {
@@ -15,6 +16,8 @@ module.exports = {
                     break;
                 case "CreateNewMessage":
                     console.log(query);
+                    const parsed = argumentParser(query);
+                    console.log(parsed);
                     return res.status(200).json({
                         data: {
                             validate: true,

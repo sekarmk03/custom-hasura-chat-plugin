@@ -34,4 +34,11 @@ module.exports = {
             data: null
         });
     },
+    internal: (res, msg) => {
+        return res.status(500).json({
+            status: 'INTERNAL SERVER ERROR',
+            message: msg,
+            data: null
+        });
+    }
 }

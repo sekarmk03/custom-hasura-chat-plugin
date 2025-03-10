@@ -5,18 +5,30 @@ const v = new Validator();
 
 module.exports = {
     validation: async (req, res, next) => {
-        const { rawRequest } = req.body;
-        const { query, operationName, variables } = rawRequest;
-
-        switch (operationName) {
-            case "SendMessage":
-                console.log(query);
-                break;
-            case "CreateNewMessage":
-                console.log(query);
-                break;
-            default:
-                break;
+        try {
+            const { rawRequest } = req.body;
+            const { query, operationName, variables } = rawRequest;
+    
+            switch (operationName) {
+                case "SendMessage":
+                    console.log(query);
+                    break;
+                case "CreateNewMessage":
+                    console.log(query);
+                    return res.status(200).json({
+                                    data: {
+                                      validate: true,
+                                      message: 'Validation success',
+                                      rawRequest: rawRequest,
+                                      jsonObject: jsonObject
+                                    },
+                                  });
+                    break;
+                default:
+                    break;
+            }
+        } catch (error) {
+            return err.internal(res, error.message);
         }
     }
 };
